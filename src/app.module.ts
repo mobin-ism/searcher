@@ -8,6 +8,7 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthModule } from './modules/auth/auth.module'
 import { RoleModule } from './modules/role/role.module'
+import { SingersModule } from './modules/singers/singers.module'
 @Module({
     imports: [
         CacheModule,
@@ -19,7 +20,8 @@ import { RoleModule } from './modules/role/role.module'
         TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
         AuthModule,
         UsersModule,
-        RoleModule
+        RoleModule,
+        SingersModule
     ],
     controllers: [AppController],
     providers: [AppService],
