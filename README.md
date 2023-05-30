@@ -24,39 +24,38 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This NestJS application covers some basic code scaffolding. It has some go-to modules like JWT auth, user role and user module. More are yet to come.
 
-## Installation
+## Getting started
+
+All the development has been done in 'dev' branch.
+To install all the dependencies, please run
 
 ```bash
-$ npm install
+$ yarn
 ```
 
 ## Running the app
 
+Before running the application, you have to make an '.env' file using the given '.env.example' file.
+
+Then you have to run the Redis server.
+
+````bash
+# fireup the redis server
+$ redis-server
+
+On a different termianl tab execute this command to run the application.
 ```bash
-# development
-$ npm run start
+# Run development
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+````
 
 ## Support
 
