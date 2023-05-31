@@ -6,9 +6,10 @@ import { typeOrmAsyncConfig } from 'src/config/typeorm.config'
 import { UsersModule } from 'src/modules/users/users.module'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { AuthModule } from './modules/auth/auth.module'
+import { AlbumsModule } from './modules/albums/albums.module'
 import { RoleModule } from './modules/role/role.module'
 import { SingersModule } from './modules/singers/singers.module'
+import { SongsModule } from './modules/songs/songs.module'
 @Module({
     imports: [
         CacheModule,
@@ -18,10 +19,11 @@ import { SingersModule } from './modules/singers/singers.module'
             cache: true
         }),
         TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
-        AuthModule,
         UsersModule,
         RoleModule,
-        SingersModule
+        SingersModule,
+        AlbumsModule,
+        SongsModule
     ],
     controllers: [AppController],
     providers: [AppService],

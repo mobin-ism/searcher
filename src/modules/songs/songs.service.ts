@@ -1,26 +1,21 @@
-import { Injectable } from '@nestjs/common';
-import { CreateSongDto } from './dto/create-song.dto';
-import { UpdateSongDto } from './dto/update-song.dto';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { SearchService } from '../search/search.service'
+import { CreateSongDto } from './dto/create-song.dto'
+import { Song } from './entities/song.entity'
 
 @Injectable()
 export class SongsService {
-  create(createSongDto: CreateSongDto) {
-    return 'This action adds a new song';
-  }
+    constructor(
+        @InjectRepository(Song)
+        private readonly songRepository: Repository<Song>,
+        private searchService: SearchService
+    ) {}
 
-  findAll() {
-    return `This action returns all songs`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} song`;
-  }
-
-  update(id: number, updateSongDto: UpdateSongDto) {
-    return `This action updates a #${id} song`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} song`;
-  }
+    async create(createSongDto: CreateSongDto) {
+        const createdSong = await this.songRepository.save(createSongDto)
+        await this.searchService.addSongs(createdSong)
+        return createdSong
+    }
 }

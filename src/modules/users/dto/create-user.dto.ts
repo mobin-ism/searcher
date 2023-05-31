@@ -1,6 +1,7 @@
 import {
     IsEmail,
     IsNotEmpty,
+    IsNumber,
     IsOptional,
     IsString,
     IsUrl
@@ -22,4 +23,8 @@ export class CreateUserDto {
     @IsString()
     @IsUrl()
     avatarUrl: string
+
+    @IsNumber()
+    @IsNotEmpty()
+    roleId: number
 }
